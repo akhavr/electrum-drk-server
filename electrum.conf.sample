@@ -28,7 +28,10 @@ pruning_limit = 100
 
 [bitcoind]
 host = localhost
-port = 9332
-# user and password from litecoin.conf
+#testnet
+port = 19998
+#mainnet
+#port = 9998
+# user and password from darkcoin.conf
 user = user
 password = password
