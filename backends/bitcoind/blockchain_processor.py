@@ -54,11 +54,18 @@ class BlockchainProcessor(Processor):
 
         self.dblock = threading.Lock()
 
-        self.bitcoind_url = 'http://%s:%s@%s:%s/' % (
-            config.get('bitcoind', 'user'),
-            config.get('bitcoind', 'password'),
-            config.get('bitcoind', 'host'),
-            config.get('bitcoind', 'port'))
+        if(config.get('bitcoind', 'testnet')=='1'):
+            self.bitcoind_url = 'http://%s:%s@%s:%s/' % (
+                config.get('bitcoind', 'testnet_user'),
+                config.get('bitcoind', 'testnet_password'),
+                config.get('bitcoind', 'testnet_host'),
+                config.get('bitcoind', 'testnet_port'))
+        else:
+            self.bitcoind_url = 'http://%s:%s@%s:%s/' % (
+                config.get('bitcoind', 'user'),
+                config.get('bitcoind', 'password'),
+                config.get('bitcoind', 'host'),
+                config.get('bitcoind', 'port'))
 
         while True:
             try:

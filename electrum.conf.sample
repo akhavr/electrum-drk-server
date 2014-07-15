@@ -27,11 +27,17 @@ path_fulltree = /path/to/your/database
 pruning_limit = 100
 
 [bitcoind]
-host = localhost
-#testnet
-port = 19998
 #mainnet
-#port = 9998
+host = localhost
+port = 9998
 # user and password from darkcoin.conf
 user = user
 password = password
+#testnet
+#if testnet==1 use testnet config
+testnet=1
+testnet_host = localhost
+testnet_port = 19998
+# user and password from darkcoin.conf
+testnet_user = user
+testnet_password = password
