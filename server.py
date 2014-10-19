@@ -29,7 +29,8 @@ import os
 logging.basicConfig()
 
 if sys.maxsize <= 2**32:
-    print "Warning: it looks like you are using a 32bit system. You may experience crashes caused by mmap"
+    print "Warning: it looks like you are using a 32bit system. "\
+        "You may experience crashes caused by mmap"
 
 
 def attempt_read_config(config, filename):
@@ -69,7 +70,7 @@ def create_config():
     config.set('leveldb', 'path_fulltree', '/dev/shm/electrum-drk_db')
     config.set('leveldb', 'pruning_limit', '100')
 
-    for path in ('/etc/', ''):
+    for path in ('/etc/', 'etc/', ''):
         filename = path + 'electrum-drk.conf'
         attempt_read_config(config, filename)
 
@@ -111,6 +112,7 @@ def cmd_info():
                           "subscriptions": len(s.subscriptions)},
                dispatcher.request_dispatcher.get_sessions())
 
+
 def cmd_debug(s):
     if s:
         from guppy import hpy
@@ -141,7 +143,7 @@ if __name__ == '__main__':
     ssl_keyfile = config.get('server', 'ssl_keyfile')
 
     if stratum_tcp_ssl_port or stratum_http_ssl_port:
-        assert ssl_certfile and ssl_keyfile
+        assert ssl_certfile and ssl_keyfile, (ssl_certfile, ssl_keyfile)
 
     if len(sys.argv) > 1:
         try:
