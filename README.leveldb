@@ -29,7 +29,7 @@ rather stay on 12.04 LTS you can use the backport and add
 "deb http://archive.ubuntu.com/ubuntu precise-backports main restricted universe"
 to your sources file. Install the package with: 
 
-sudo apt-get install python-leveldb
+sudo apt-get install python-leveldb libleveldb-dev
 
 alternatively build yourself, see
 http://code.google.com/p/py-leveldb/ 
